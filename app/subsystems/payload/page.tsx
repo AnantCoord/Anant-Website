@@ -19,25 +19,31 @@ export const metadata: Metadata = {
 };
 
 const specs = [
-  { param: "Spectral Bands", value: "270" },
+  { param: "Spectral Bands", value: "32" },
   { param: "Sensor Format", value: "640×480" },
   { param: "Bit Depth", value: "12-bit" },
   { param: "Compression", value: "CCSDS" },
   { param: "Power Consumption", value: "~10 W" },
-  { param: "Data Interface", value: "USB 3.0" },
+  { param: "Data Interface", value: "I²C" },
 ];
 
 const components = [
   {
     id: "camera",
     name: "Hyperspectral Camera",
-    description: "Compact imaging sensor capturing 270 spectral bands across visible and near-infrared wavelengths. Enables detailed spectral analysis for vegetation health, water quality, and land classification.",
+    description: "Compact imaging sensor capturing 32 spectral bands across visible and near-infrared wavelengths. Enables detailed spectral analysis for vegetation health, water quality, and land classification.",
   },
   {
     id: "processing",
     name: "Data Processing",
     description: "On-board CCSDS compression algorithm reduces data volume by up to 4:1 while preserving spectral fidelity. Enables efficient storage and transmission of hyperspectral datacubes.",
   },
+
+  {
+    id: "pipeline",
+    name: "Pipeline",
+    description: "An end-to-end pipeline supporting high-impact computer vision tasks, including semantic segmentation, object detection, and anomaly detection."
+  }
 ];
 
 const applications = [
@@ -56,8 +62,8 @@ const applications = [
 ];
 
 const stats = [
-  { value: "270", label: "Spectral Bands" },
-  { value: "640×480", label: "Resolution" },
+  { value: "32", label: "Spectral Bands" },
+  { value: "30 m at 500 km", label: "Ground Sampling Distance" },
   { value: "~10 W", label: "Power Draw" },
 ];
 
@@ -98,10 +104,10 @@ export default function PayloadPage() {
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <p className="text-muted-foreground leading-relaxed text-lg border-l-4 border-primary pl-6 mb-6">
               The hyperspectral imaging payload is the primary scientific instrument of the mission,
-              capturing detailed spectral data across 270 bands for Earth observation and remote sensing.
+              capturing detailed spectral data across 32 bands for Earth observation and remote sensing.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              With a 640×480 sensor format and 12-bit depth, the payload enables vegetation monitoring,
+              With a 4096 pixel across-track sensor format and 12-bit depth, the payload enables vegetation monitoring,
               water quality assessment, and land classification. On-board CCSDS compression ensures 
               efficient data transmission during ground station passes.
             </p>

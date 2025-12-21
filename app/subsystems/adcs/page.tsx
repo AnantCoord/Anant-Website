@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 
 const specs = [
   { param: "IMU", value: "BNO085" },
-  { param: "Pointing Accuracy", value: "±5°" },
-  { param: "Actuators", value: "Magnetorquers" },
-  { param: "Algorithm", value: "B-dot Controller" },
-  { param: "Detumbling Time", value: "<30 min" },
+  { param: "GPS/GNSS Receiver", value: "Spacemanic's Celeste" },
+  { param: "Actuators", value: "Magnetorquers, Reaction Wheels" },
+  { param: "Algorithm", value: "B-dot Controller, PID Control" },
+  { param: "Estimation", value: "Karman Filters" },
   { param: "Stabilization", value: "3-axis" },
 ];
 
@@ -34,9 +34,23 @@ const components = [
     description: "BNO085 IMU with magnetometer, gyroscope, and accelerometer for attitude sensing. Provides 9-DOF motion data with sensor fusion.",
   },
   {
+    id: "estimations",
+    name: "Estimation of Sensor Data",
+    description: "Using Karman Filter to estimate true state from noisy and incomplete sensor measurements.",
+  },
+  {
     id: "actuators",
     name: "Actuators",
-    description: "Magnetorquers with PWM control for attitude adjustment using Earth's magnetic field. Three orthogonal coils provide full 3-axis control.",
+    description: (
+      <>
+        Magnetorquers with PWM control for attitude adjustment using Earth's magnetic field.
+        <br />
+        <br />
+        Reaction Wheels for precise attitude control by taking advantage of Newton’s third law
+        of motion. Four reaction wheels in a tetrahedral arrangement for redundancy and fault
+        tolerance, ensuring 3-axis control in case one fails.
+      </>
+    ),
   },
   {
     id: "gps",
@@ -45,11 +59,11 @@ const components = [
   },
 ];
 
-const stats = [
-  { value: "±5°", label: "Pointing Accuracy" },
-  { value: "<30 min", label: "Detumbling Time" },
-  { value: "3-axis", label: "Stabilization" },
-];
+// const stats = [
+//   { value: "±5°", label: "Pointing Accuracy" },
+//   { value: ">30 min", label: "Detumbling Time" },
+//   { value: "3-axis", label: "Stabilization" },
+// ];
 
 export default function ADCSPage() {
   return (
@@ -68,7 +82,7 @@ export default function ADCSPage() {
       </section>
 
       {/* Quick Stats */}
-      <section className="py-8">
+      {/* <section className="py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {stats.map((stat, index) => (
@@ -79,7 +93,7 @@ export default function ADCSPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Overview */}
       <section className="py-12 container mx-auto px-4">

@@ -15,40 +15,50 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
   title: "OBC - On-Board Computer | Team Anant",
   description:
-    "BeagleBone Black Industrial-based central processing unit for Team Anant's nanosatellite with autonomous experiment control and fault tolerance.",
+    "Zynq-7000 SoC based onboard computer system for Team Anant's nanosatellite with custom OS.",
 };
 
 const specs = [
-  { param: "Platform", value: "BeagleBone Black Industrial" },
-  { param: "Processor", value: "ARM Cortex-A8 @ 1 GHz" },
-  { param: "Operating System", value: "Custom RTOS" },
-  { param: "Memory", value: "512 MB DDR3" },
-  { param: "Storage", value: "4 GB eMMC" },
+  { param: "Platform", value: "Zynq-7000 All Programmable SoC" },
+  { param: "Processor System (PS)", value: "Dual ARM Cortex-A9 @ 1 GHz" },
+  { param: "Programmable Logic (PL)", value: "28 nm Xilinx PL" },
+  { param: "Operating System", value: "Custom Linux system - TACOS" },
+  { param: "Memory", value: "256 KB On-Chip with external DDR3/DDR2/LPDDR2 support" },
   { param: "Power Consumption", value: "<2 W" },
 ];
 
 const components = [
   {
     id: "processor",
-    name: "Processing Unit",
-    description: "ARM Cortex-A8 processor running custom RTOS for reliable operations. Handles mission scheduling, subsystem coordination, and data processing with fault-tolerant software architecture.",
+    name: "Processor System",
+    description: "Dual ARM Cortex-A9 processor system running a custom Linux OS for reliable operations. Handles flight plan, ubsystem interfacing and image compression with fault-tolerant software architecture.",
   },
   {
-    id: "storage",
-    name: "Data Storage",
-    description: "Redundant storage system with 4 GB eMMC and error correction for mission data. Supports payload data buffering and housekeeping log storage.",
+    id: "fpga",
+    name: "Programmable Logic",
+    description: "28 nm Xilinx PL equipped with Configurable Logic Blocks, Signal Processing Blocks, Programmable I/O, transceivers and serial interface. Platform for SpaceWire Protocol implementation as well as image compression.",
   },
   {
     id: "interfaces",
-    name: "Interface Controller",
-    description: "Multiple communication interfaces (I2C, SPI, UART) for subsystem coordination. Enables seamless data exchange with all satellite subsystems.",
+    name: "Subsystem Interfacing",
+    description: "Multiple communication interfaces (SpaceWire, I2C, SPI, UART) for subsystem coordination. We write custom device drivers to suit our sensor interfacing needs.",
+  },
+  {
+    id: "flight_plan",
+    name: "Flight Plan",
+    description: "Coded in C++ and based on an Actor model, our flight plan software is fully modular, scaleable and testable. The OBC decides state transitions based on signals from sensors and some defined emergency conditions.",
+  },
+  {
+    id: "os",
+    name: "Operating System",
+    description: "TACOS - Team Anant's Cubesat Operating System is our very own Linux-based OS that runs on the OBC. Built using Yocto, based on the Linux 6.12 kernel, our OS is fault-tolerant, verifiable and implements Secure Boot.",
   },
 ];
 
 const stats = [
   { value: "1 GHz", label: "Clock Speed" },
-  { value: "99.99%", label: "Uptime Target" },
-  { value: "<2 W", label: "Power Draw" },
+  { value: "99.99%", label: "Targeted Uptime" },
+  { value: "<2 W", label: "Power Consumption" },
 ];
 
 export default function OBCPage() {
@@ -61,7 +71,7 @@ export default function OBCPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">OBC</h1>
             <p className="text-xl text-primary mb-2">On-Board Computer</p>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Central processing unit with autonomous experiment control, fault tolerance, and real-time data acquisition.
+              System-on-Chip based onboard computer equipped with custom Linux OS for data processing, flight plan and subsystem interfacing.<br />FPGA enabled.
             </p>
           </div>
         </div>
@@ -88,12 +98,12 @@ export default function OBCPage() {
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <p className="text-muted-foreground leading-relaxed text-lg border-l-4 border-primary pl-6 mb-6">
               The On-Board Computer serves as the brain of the satellite, coordinating all subsystem operations
-              and managing mission data. It executes the mission schedule and handles autonomous decision-making.
+              and managing mission data. It executes the flight plan and handles autonomous decision-making.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Built on the BeagleBone Black Industrial platform with a custom real-time operating system, 
-              the OBC provides reliable space operations with fault-tolerant software architecture. It manages 
-              payload scheduling, data storage, and ground communication protocols.
+              Built on an AMD (Xilinx) Zynq-7000 All Programmable SoC, running a custom Linux-based operating system,
+              the OBC provides reliable space operations with fault-tolerant software architecture. It manages
+              payload scheduling, subsystem interfacing, state management and ground communication protocols.
             </p>
           </div>
         </div>
