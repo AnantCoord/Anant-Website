@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -16,6 +17,49 @@ import {
 import { MotionSection, MotionItem, MotionH2, MotionH3, MotionP } from "@/components/motion";
 import { TiltCard, Magnetic, SlideReveal } from "@/components/effects";
 import { containerReveal, itemReveal, listContainer, listItem, EASE } from "@/lib/motion";
+import { cn } from "@/lib/utils";
+
+// Custom Avatar with loading state
+function TeamAvatar({
+  src,
+  alt,
+  fallback,
+  className,
+  ringClassName,
+}: {
+  src: string;
+  alt: string;
+  fallback: string;
+  className?: string;
+  ringClassName?: string;
+}) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <Avatar className={cn(className, ringClassName)}>
+      {isLoading && !hasError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-muted rounded-full">
+          <div className="w-full h-full animate-pulse bg-gradient-to-br from-muted via-muted-foreground/10 to-muted rounded-full" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-1/3 h-1/3 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+          </div>
+        </div>
+      )}
+      <AvatarImage
+        src={src}
+        alt={alt}
+        onLoad={() => setIsLoading(false)}
+        onError={() => {
+          setIsLoading(false);
+          setHasError(true);
+        }}
+        className={cn(isLoading && "opacity-0")}
+      />
+      <AvatarFallback className="text-sm">{fallback}</AvatarFallback>
+    </Avatar>
+  );
+}
 
 const teamData = {
   faculty: {
@@ -211,10 +255,13 @@ export function Team() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <Magnetic strength={8} radius={120}>
-                <Avatar className="w-36 h-36 mb-4 ring-4 ring-primary/30 transition-all hover:ring-primary/50 hover:shadow-lg hover:shadow-primary/20 animate-float">
-                  <AvatarImage src={teamData.faculty.image} alt={teamData.faculty.name} />
-                  <AvatarFallback className="text-2xl">{getInitials(teamData.faculty.name)}</AvatarFallback>
-                </Avatar>
+                <TeamAvatar
+                  src={teamData.faculty.image}
+                  alt={teamData.faculty.name}
+                  fallback={getInitials(teamData.faculty.name)}
+                  className="w-36 h-36 mb-4 animate-float"
+                  ringClassName="ring-4 ring-primary/30 transition-all hover:ring-primary/50 hover:shadow-lg hover:shadow-primary/20"
+                />
               </Magnetic>
               <SlideReveal delay={0.1}>
                 <h4 className="text-xl font-semibold mb-1">{teamData.faculty.name}</h4>
@@ -246,10 +293,13 @@ export function Team() {
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       >
                         <Magnetic strength={6} radius={80}>
-                          <Avatar className="w-20 h-20 ring-2 ring-primary/40 transition-all hover:ring-primary/60 hover:shadow-md hover:shadow-primary/15">
-                            <AvatarImage src={member.image} alt={member.name} />
-                            <AvatarFallback>{getInitials(member.name)}</AvatarFallback>
-                          </Avatar>
+                          <TeamAvatar
+                            src={member.image}
+                            alt={member.name}
+                            fallback={getInitials(member.name)}
+                            className="w-20 h-20"
+                            ringClassName="ring-2 ring-primary/40 transition-all hover:ring-primary/60 hover:shadow-md hover:shadow-primary/15"
+                          />
                         </Magnetic>
                         <div className="text-left">
                           <p className="font-medium">{member.name}</p>
@@ -313,12 +363,13 @@ export function Team() {
                                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
                                   <Magnetic strength={5} radius={60}>
-                                    <Avatar className="w-20 h-20 mx-auto mb-2 ring-2 ring-primary/40 transition-all group-hover:ring-primary/70 group-hover:scale-105 group-hover:shadow-md group-hover:shadow-primary/20">
-                                      <AvatarImage src={member.image} alt={member.name} />
-                                      <AvatarFallback className="text-sm">
-                                        {getInitials(member.name)}
-                                      </AvatarFallback>
-                                    </Avatar>
+                                    <TeamAvatar
+                                      src={member.image}
+                                      alt={member.name}
+                                      fallback={getInitials(member.name)}
+                                      className="w-20 h-20 mx-auto mb-2"
+                                      ringClassName="ring-2 ring-primary/40 transition-all group-hover:ring-primary/70 group-hover:scale-105 group-hover:shadow-md group-hover:shadow-primary/20"
+                                    />
                                   </Magnetic>
                                   <p className="text-xs font-medium truncate">{member.name.split(" ")[0]}</p>
                                   <span className="text-[10px] text-primary">
@@ -355,12 +406,13 @@ export function Team() {
                                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
                                   <Magnetic strength={4} radius={50}>
-                                    <Avatar className="w-18 h-18 mx-auto mb-2 transition-all group-hover:scale-105 group-hover:ring-2 group-hover:ring-primary/30 group-hover:shadow-sm group-hover:shadow-primary/15">
-                                      <AvatarImage src={member.image} alt={member.name} />
-                                      <AvatarFallback className="text-sm">
-                                        {getInitials(member.name)}
-                                      </AvatarFallback>
-                                    </Avatar>
+                                    <TeamAvatar
+                                      src={member.image}
+                                      alt={member.name}
+                                      fallback={getInitials(member.name)}
+                                      className="w-18 h-18 mx-auto mb-2"
+                                      ringClassName="transition-all group-hover:scale-105 group-hover:ring-2 group-hover:ring-primary/30 group-hover:shadow-sm group-hover:shadow-primary/15"
+                                    />
                                   </Magnetic>
                                   <p className="text-xs font-medium truncate">{member.name.split(" ")[0]}</p>
                                 </motion.div>
