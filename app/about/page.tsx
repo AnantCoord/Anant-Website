@@ -1,4 +1,5 @@
 import { About } from "@/components/sections/About";
+import { Footer } from "@/components/sections/Footer";
 
 export const metadata = {
   title: "About | Team Anant",
@@ -7,8 +8,11 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="pt-14 md:pt-16">
-      <About />
-    </div>
+    <>
+      <div className="pt-14 md:pt-16">
+        <About />
+      </div>
+      <Footer />
+    </>
   );
 }

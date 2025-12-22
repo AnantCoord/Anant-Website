@@ -1,4 +1,5 @@
 import { Contact } from "@/components/sections/Contact";
+import { Footer } from "@/components/sections/Footer";
 
 export const metadata = {
   title: "Contact | Team Anant",
@@ -7,8 +8,11 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="pt-14 md:pt-16">
-      <Contact />
-    </div>
+    <>
+      <div className="pt-14 md:pt-16">
+        <Contact />
+      </div>
+      <Footer />
+    </>
   );
 }

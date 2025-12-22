@@ -1,4 +1,5 @@
 import { Publications } from "@/components/sections/Publications";
+import { Footer } from "@/components/sections/Footer";
 
 export const metadata = {
   title: "Publications | Team Anant",
@@ -7,8 +8,11 @@ export const metadata = {
 
 export default function PublicationsPage() {
   return (
-    <div className="pt-14 md:pt-16">
-      <Publications />
-    </div>
+    <>
+      <div className="pt-14 md:pt-16">
+        <Publications />
+      </div>
+      <Footer />
+    </>
   );
 }

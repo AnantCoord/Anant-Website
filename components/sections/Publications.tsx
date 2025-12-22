@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -7,7 +10,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Download, Quote, FileText, BookOpen, FileCode } from "lucide-react";
+import { Download, FileText, BookOpen, FileCode, ExternalLink } from "lucide-react";
+import { MotionSection, MotionItem, MotionH2, MotionH3, MotionP } from "@/components/motion";
+import { TiltCard, Magnetic } from "@/components/effects";
+import { containerReveal, itemReveal, listContainer, listItem, EASE } from "@/lib/motion";
 
 const publications = [
   {
@@ -18,6 +24,7 @@ const publications = [
     year: "2024",
     type: "Conference Paper",
     pdf: "/papers/2024_10-IAC75-Dynamic Simulation of Electrical and Thermal Systems-Aryan,Vinayak,Sai,Shiv.pdf",
+    externalUrl: null,
     abstract:
       "This paper presents a comprehensive dynamic simulation framework for electrical and thermal systems in nanosatellites.",
   },
@@ -29,6 +36,7 @@ const publications = [
     year: "2023",
     type: "Conference Paper",
     pdf: "/papers/Hardware Architecture of Electrical Power System for 3U Hyperspectral Imaging CubeSat - Nihal Sanjay Singh.pdf",
+    externalUrl: null,
     abstract:
       "Design and implementation of robust electrical power systems for hyperspectral imaging CubeSat missions.",
   },
@@ -40,6 +48,7 @@ const publications = [
     year: "2023",
     type: "Journal Article",
     pdf: "/papers/Implementation of CCSDS Hyperspectral Image Compression Algorithm onboard a nanosatellite.pdf",
+    externalUrl: null,
     abstract:
       "Novel approach to implementing CCSDS compression standards for hyperspectral data processing in resource-constrained environments.",
   },
@@ -51,6 +60,7 @@ const publications = [
     year: "2020",
     type: "Conference Paper",
     pdf: "/papers/IAC2020-KalmanFilter - Aditya Bhardwaj.pdf",
+    externalUrl: null,
     abstract:
       "Advanced Kalman filtering techniques for precise attitude determination in nanosatellite systems.",
   },
@@ -62,6 +72,7 @@ const publications = [
     year: "2017",
     type: "Conference Paper",
     pdf: "/papers/IAC2017-HelmholtzCage - Tushar Goyal.pdf",
+    externalUrl: null,
     abstract:
       "Design and implementation of Helmholtz cage systems for magnetic field testing of satellite components.",
   },
@@ -73,6 +84,7 @@ const publications = [
     year: "2023",
     type: "Technical Report",
     pdf: "/papers/Final_Modes_of_Operation_Paper.pdf",
+    externalUrl: null,
     abstract: "Comprehensive analysis of operational modes for efficient nanosatellite mission execution.",
   },
 ];
@@ -112,82 +124,120 @@ export function Publications() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Publications</h2>
-            <div className="h-1 w-16 mx-auto mb-6 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <MotionSection className="text-center mb-16">
+            <MotionH2 className="text-3xl md:text-5xl font-bold mb-4">Publications</MotionH2>
+            <MotionItem>
+              <div className="h-1 w-16 mx-auto mb-6 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
+            </MotionItem>
+            <MotionP className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Our research contributions to the field of nanosatellite technology and space systems
-            </p>
-          </div>
+            </MotionP>
+          </MotionSection>
 
           {/* Publications Stats - Simple grid without cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <MotionSection className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
+              <motion.div 
+                key={stat.label} 
+                className="text-center p-4 rounded-lg hover:bg-muted/20 transition-colors duration-300"
+                variants={itemReveal}
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 200, damping: 25 }}
+              >
+                <div className="text-3xl font-bold text-primary mb-1 drop-shadow-[0_0_8px_rgba(180,120,90,0.3)]">{stat.value}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </MotionSection>
 
           {/* Publications Accordion */}
-          <Accordion type="single" collapsible className="mb-16">
-            {publications.map((publication) => {
-              const TypeIcon = getTypeIcon(publication.type);
-              return (
-                <AccordionItem key={publication.id} value={publication.id} className="border-b">
-                  <AccordionTrigger className="hover:no-underline py-4 group">
-                    <div className="flex-1 text-left pr-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge variant={getTypeVariant(publication.type)} className="text-xs">
-                          <TypeIcon className="w-3 h-3 mr-1" />
-                          {publication.type}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{publication.year}</span>
-                      </div>
-                      <h3 className="text-base md:text-lg font-semibold group-hover:text-primary transition-colors">
-                        {publication.title}
-                      </h3>
-                      <p className="text-sm text-primary/80 mt-1">{publication.authors}</p>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-6">
-                    <div className="pl-0 space-y-4">
-                      <p className="text-sm text-muted-foreground italic">{publication.conference}</p>
-                      <p className="text-muted-foreground leading-relaxed">{publication.abstract}</p>
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        <Button asChild size="sm">
-                          <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
-                            <Download className="w-4 h-4 mr-2" />
-                            Download PDF
-                          </a>
-                        </Button>
-                        <Button variant="outline" size="sm">
-                          <Quote className="w-4 h-4 mr-2" />
-                          Cite
-                        </Button>
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
+          <motion.div
+            variants={listContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
+            <Accordion type="single" collapsible className="mb-16">
+              {publications.map((publication, index) => {
+                const TypeIcon = getTypeIcon(publication.type);
+                return (
+                  <motion.div key={publication.id} variants={listItem}>
+                    <AccordionItem value={publication.id} className="border-b">
+                      <AccordionTrigger className="hover:no-underline py-4 group">
+                        <div className="flex-1 text-left pr-4">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Badge variant={getTypeVariant(publication.type)} className="text-xs">
+                              <TypeIcon className="w-3 h-3 mr-1" />
+                              {publication.type}
+                            </Badge>
+                            <span className="text-xs text-muted-foreground">{publication.year}</span>
+                          </div>
+                          <h3 className="text-base md:text-lg font-semibold group-hover:text-primary transition-colors">
+                            {publication.title}
+                          </h3>
+                          <p className="text-sm text-primary/80 mt-1">{publication.authors}</p>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="pb-6">
+                        <motion.div 
+                          className="pl-0 space-y-4"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <p className="text-sm text-muted-foreground italic">{publication.conference}</p>
+                          <p className="text-muted-foreground leading-relaxed">{publication.abstract}</p>
+                          <div className="flex flex-wrap gap-2 pt-2">
+                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                              <Button asChild size="sm">
+                                <a href={publication.pdf} target="_blank" rel="noopener noreferrer">
+                                  <Download className="w-4 h-4 mr-2" />
+                                  Download PDF
+                                </a>
+                              </Button>
+                            </motion.div>
+                            {publication.externalUrl && (
+                              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                                <Button asChild variant="outline" size="sm">
+                                  <a href={publication.externalUrl} target="_blank" rel="noopener noreferrer">
+                                    <ExternalLink className="w-4 h-4 mr-2" />
+                                    View on Publisher
+                                  </a>
+                                </Button>
+                              </motion.div>
+                            )}
+                          </div>
+                        </motion.div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </motion.div>
+                );
+              })}
+            </Accordion>
+          </motion.div>
 
           {/* Call to Action - Simple styled div */}
-          <div className="text-center py-10 px-6 rounded-2xl bg-muted/30 border border-border/50">
-            <h3 className="text-2xl font-semibold mb-2">Interested in Collaborating?</h3>
-            <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+          <MotionSection className="text-center">
+            <TiltCard tiltAmount={4} glareOpacity={0.06} className="py-10 px-6 rounded-2xl bg-muted/30 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10">
+              <MotionH3 className="text-2xl font-semibold mb-2">Interested in Collaborating?</MotionH3>
+            <MotionP className="text-muted-foreground mb-6 max-w-lg mx-auto">
               We&apos;re open to research collaborations and partnerships. Contact us to explore
               opportunities for joint research projects.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild>
-                <Link href="/contact">Contact for Collaboration</Link>
-              </Button>
-              <Button variant="outline">View All Publications</Button>
-            </div>
-          </div>
+            </MotionP>
+            <motion.div 
+              className="flex justify-center"
+              variants={containerReveal}
+            >
+              <Magnetic strength={10} radius={80}>
+                <motion.div variants={itemReveal} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
+                  <Button asChild>
+                    <Link href="/contact">Contact for Collaboration</Link>
+                  </Button>
+                </motion.div>
+              </Magnetic>
+            </motion.div>
+            </TiltCard>
+          </MotionSection>
         </div>
       </div>
     </section>

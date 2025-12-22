@@ -82,6 +82,8 @@
   --primary-foreground: oklch(0.1797 0.0043 308.1928);
   --secondary: oklch(0.5940 0.0443 196.0233);
   --secondary-foreground: oklch(0.1797 0.0043 308.1928);
+  --accent-teal: oklch(0.75 0.15 180);
+  --accent-teal-foreground: oklch(0.1797 0.0043 308.1928);
   --muted: oklch(0.2520 0 0);
   --muted-foreground: oklch(0.6268 0 0);
   --accent: oklch(0.3211 0 0);
@@ -138,6 +140,8 @@
   --primary-foreground: oklch(0.1797 0.0043 308.1928);
   --secondary: oklch(0.5940 0.0443 196.0233);
   --secondary-foreground: oklch(0.1797 0.0043 308.1928);
+  --accent-teal: oklch(0.75 0.15 180);
+  --accent-teal-foreground: oklch(0.1797 0.0043 308.1928);
   --muted: oklch(0.2520 0 0);
   --muted-foreground: oklch(0.6268 0 0);
   --accent: oklch(0.3211 0 0);
@@ -222,6 +226,14 @@
   background-position: 8% 14%, 82% 72%;
   opacity: 0.45;
   pointer-events: none;
+  animation: twinkleOverlay 8s ease-in-out infinite;
+}
+
+@keyframes twinkleOverlay {
+  0%, 100% { opacity: 0.4; }
+  25% { opacity: 0.55; }
+  50% { opacity: 0.45; }
+  75% { opacity: 0.6; }
 }
 
 .space-bg::after {
@@ -253,6 +265,57 @@
 @media (prefers-reduced-motion: reduce) {
   .space-bg { animation: none; }
   .space-bg::after { animation: none; opacity: 0; }
+  .animate-float { animation: none; }
+  .animate-float-slow { animation: none; }
+  .animate-pulse-glow { animation: none; }
+}
+
+/* Floating animation - zero gravity feel */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--primary-rgb, 114, 20, 19), 0); }
+  50% { box-shadow: 0 0 20px 2px rgba(var(--primary-rgb, 114, 20, 19), 0.15); }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { 
+    box-shadow: 0 4px 6px -1px rgba(45, 212, 191, 0.25);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 4px 15px -1px rgba(45, 212, 191, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s ease-in-out infinite;
 }
 
 /* Hero cosmic gradient overlay */

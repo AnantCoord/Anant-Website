@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -6,6 +9,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { MotionSection, MotionItem, MotionH2, MotionP } from "@/components/motion";
+import { TiltCard, Magnetic } from "@/components/effects";
+import { containerReveal, itemReveal, listContainer, listItem } from "@/lib/motion";
 
 const contactInfo = [
   {
@@ -25,8 +31,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    content: "team.anant@pilani.bits-pilani.ac.in",
-    href: "mailto:team.anant@pilani.bits-pilani.ac.in",
+    content: "anant_coordinator@pilani.bits-pilani.ac.in",
+    href: "mailto:anant_coordinator@pilani.bits-pilani.ac.in",
   },
   {
     icon: Phone,
@@ -50,54 +56,75 @@ export function Contact() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-            <div className="h-1 w-16 mx-auto mb-6 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <MotionSection className="text-center mb-16">
+            <MotionH2 className="text-3xl md:text-5xl font-bold mb-4">Get In Touch</MotionH2>
+            <MotionItem>
+              <div className="h-1 w-16 mx-auto mb-6 bg-gradient-to-r from-primary to-primary/50 rounded-full" />
+            </MotionItem>
+            <MotionP className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Have questions about our project or interested in collaboration? We&apos;d love to hear from you.
-            </p>
-          </div>
+            </MotionP>
+          </MotionSection>
 
           {/* Contact Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8 mb-12"
+            variants={listContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {contactInfo.map((item) => (
-              <a
-                key={item.title}
-                href={item.href}
-                target={item.title === "Address" ? "_blank" : undefined}
-                rel={item.title === "Address" ? "noopener noreferrer" : undefined}
-                className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-muted/50 transition-colors"
-              >
-                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <item.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-semibold mb-2">{item.title}</h4>
-                <div className="text-muted-foreground text-sm group-hover:text-foreground transition-colors">
-                  {item.content}
-                </div>
-              </a>
+              <motion.div key={item.title} variants={listItem}>
+                <TiltCard tiltAmount={6} glareOpacity={0.06} className="h-full">
+                  <a
+                    href={item.href}
+                    target={item.title === "Address" ? "_blank" : undefined}
+                    rel={item.title === "Address" ? "noopener noreferrer" : undefined}
+                    className="group flex flex-col items-center text-center p-6 rounded-xl hover:bg-muted/30 transition-all duration-300 h-full"
+                  >
+                    <Magnetic strength={5} radius={50}>
+                      <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-300">
+                        <item.icon className="w-6 h-6 text-primary" />
+                      </div>
+                    </Magnetic>
+                    <h4 className="font-semibold mb-2">{item.title}</h4>
+                    <div className="text-muted-foreground text-sm group-hover:text-foreground transition-colors">
+                      {item.content}
+                    </div>
+                  </a>
+                </TiltCard>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           <Separator className="my-8" />
 
           {/* Social Links */}
-          <div className="text-center">
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
             <p className="text-sm text-muted-foreground mb-4">Connect with us</p>
             <TooltipProvider>
               <div className="flex justify-center gap-4">
                 {socialLinks.map((social) => (
                   <Tooltip key={social.name}>
                     <TooltipTrigger asChild>
-                      <a
+                      <motion.a
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 rounded-full flex items-center justify-center bg-muted hover:bg-primary/10 hover:text-primary transition-colors"
+                        className="w-12 h-12 rounded-full flex items-center justify-center bg-muted hover:bg-primary/10 hover:text-primary hover:shadow-md hover:shadow-primary/20 transition-all duration-300"
                         aria-label={social.name}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         <social.icon className="w-5 h-5" />
-                      </a>
+                      </motion.a>
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>{social.name}</p>
@@ -106,7 +133,7 @@ export function Contact() {
                 ))}
               </div>
             </TooltipProvider>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
