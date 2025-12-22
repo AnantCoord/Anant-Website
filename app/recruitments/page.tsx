@@ -24,14 +24,14 @@ const recruitmentStages: Stage[] = [
     id: "orientation",
     name: "Orientation",
     date: "January 10, 2025",
-    status: "current",
-    description: "Get introduced to Team Anant, our mission, and what we do. Learn about the different subsystems and find where your interests align.",
+    status: "upcoming",
+    description: "To introduce you to our work, vision, and opportunitites for you to be a part of this journey, we are hosting an Orientation Session. Learn about the different subsystems and find where your interests align.",
     details: [
       "Introduction to Team Anant and our satellite projects",
       "Overview of all six subsystems",
       "Meet current team members and leads",
       "Q&A session for prospective members",
-      "Campus location: Workshop Area, Student Activity Center"
+      "Location: TBA"
     ],
     resources: [
       { name: "Orientation Slides", url: "#" },
@@ -40,30 +40,29 @@ const recruitmentStages: Stage[] = [
   },
   {
     id: "test-1",
-    name: "Test 1",
-    date: "January 17, 2025",
+    name: "Round 1 Test",
+    date: "January 16, 2025",
     status: "upcoming",
-    description: "The first screening test to evaluate your fundamental understanding and problem-solving abilities.",
+    description: "The first screening test to evaluate your fundamental understanding and problem-solving abilities. We hope you enjoy the paper!",
     details: [
-      "Duration: 2 hours",
-      "Topics: Basic physics, mathematics, and logical reasoning",
-      "Format: Multiple choice and short answer questions",
-      "Minimum passing score: 50%",
-      "Results announced within 3 days"
+      "Duration: 24 hours",
+      "Open Internet Test",
+      "You may attempt the paper for multiple subsystems.",
+      "Your current choice does not lock you into the specific vertical."
     ],
     resources: [
-      { name: "Study Material", url: "#" },
-      { name: "Sample Questions", url: "#" }
+      { name: "Resources", url: "#" },
+      // { name: "Sample Questions", url: "#" }
     ]
   },
   {
     id: "introductory-lectures",
     name: "Introductory Lectures",
-    date: "January 20-26, 2025",
+    date: "January 28 - February 11, 2025",
     status: "upcoming",
     description: "Attend specialized lectures for each subsystem to understand the technical aspects and choose your preferred domain.",
     details: [
-      "One lecture per subsystem over the week",
+      "One-Two lecture per subsystem over the weeks",
       "Topics covered: EPS, OBC, TTC, ADCS, STS, Payload",
       "Hands-on demonstrations where applicable",
       "Attendance mandatory for all lectures",
@@ -76,14 +75,13 @@ const recruitmentStages: Stage[] = [
   },
   {
     id: "task-2",
-    name: "Task 2",
-    date: "January 27 - February 5, 2025",
+    name: "Round 2 Tasks",
+    date: "February 12-19, 2025",
     status: "upcoming",
-    description: "Complete a subsystem-specific task to demonstrate your understanding and technical skills.",
+    description: "Complete a subsystem-specific tasks assigned during the lectures to demonstrate your understanding and technical skills.",
     details: [
-      "Choose your preferred subsystem",
-      "Task duration: 10 days",
-      "Practical implementation required",
+      "Can choose multiple subsystems",
+      "Practical implementation needed wherever required",
       "Documentation and presentation of your work",
       "Mentorship available from current members"
     ],
@@ -94,18 +92,17 @@ const recruitmentStages: Stage[] = [
   {
     id: "final-interviews",
     name: "Final Interviews",
-    date: "February 8-10, 2025",
+    date: "TBA",
     status: "upcoming",
-    description: "One-on-one interviews with subsystem leads to discuss your task, interests, and commitment to the team.",
+    description: "One-on-one interviews to discuss the techinical skills you built up during the recruitment process",
     details: [
       "Duration: 20-30 minutes per candidate",
       "Discussion of Task 2 submission",
       "Technical questions on chosen subsystem",
       "Assessment of teamwork and communication skills",
-      "Final selection announcement: February 15, 2025"
     ],
     resources: [
-      { name: "Interview Tips", url: "#" }
+      // { name: "Interview Tips", url: "#" }
     ]
   }
 ];
