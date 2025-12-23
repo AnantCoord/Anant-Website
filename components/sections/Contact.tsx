@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Linkedin } from "lucide-react";
+import { MapPin, Mail, Instagram, Linkedin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
@@ -35,10 +35,10 @@ const contactInfo = [
     href: "mailto:anant_coordinator@pilani.bits-pilani.ac.in",
   },
   {
-    icon: Phone,
-    title: "Phone",
-    content: "+91 90807 96426",
-    href: "tel:+919080796426",
+    icon: Instagram,
+    title: "Instagram",
+    content: "@teamanantbits",
+    href: "https://www.instagram.com/teamanantbits",
   },
 ];
 
