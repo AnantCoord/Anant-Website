@@ -23,7 +23,7 @@ const recruitmentStages: Stage[] = [
   {
     id: "orientation",
     name: "Orientation",
-    date: "January 9, 2025",
+    date: "January 14, 2025",
     status: "current",
     description: "To introduce you to our work, vision, and opportunitites for you to be a part of this journey, we are hosting an Orientation Session. Learn about the different subsystems and find where your interests align.",
     details: [
@@ -41,7 +41,7 @@ const recruitmentStages: Stage[] = [
   {
     id: "test-1",
     name: "Round 1 Test",
-    date: "January 16, 2025",
+    date: "January 17, 2025",
     status: "upcoming",
     description: "The first screening test to evaluate your fundamental understanding and problem-solving abilities. We hope you enjoy the paper!",
     details: [
@@ -51,13 +51,28 @@ const recruitmentStages: Stage[] = [
       "Your current choice does not lock you into the specific vertical."
     ],
     resources: [
-      { name: "Resources", url: "#" },
+      { name: "Resources", url: "https://docs.google.com/document/d/1P9OWGGBwnghbKJ-MV08gKG0f1u7XYaIjdFwldpma6kE/" },
       // { name: "Sample Questions", url: "#" }
     ]
   },
   {
-    id: "introductory-lectures",
-    name: "Introductory Lectures",
+    id: "interviews-1",
+    name: "Round 1 Interviews",
+    date: "TBA",
+    status: "upcoming",
+    description: "Personal interviews to discuss your test performance for Round 1.",
+    details: [
+      "You may be called for multiple interviews based on the subsystems you attempted.",
+      "Discussion of your answers and problem-solving approach",      
+    ],
+    resources: [
+      { name: "Resources", url: "https://docs.google.com/document/d/1P9OWGGBwnghbKJ-MV08gKG0f1u7XYaIjdFwldpma6kE/" },
+      // { name: "Sample Questions", url: "#" }
+    ]
+  },
+  {
+    id: "probationary-lectures",
+    name: "Probationary Lectures",
     date: "January 28 - February 11, 2025",
     status: "upcoming",
     description: "Attend specialized lectures for each subsystem to understand the technical aspects and choose your preferred domain.",
@@ -76,7 +91,7 @@ const recruitmentStages: Stage[] = [
   {
     id: "task-2",
     name: "Round 2 Tasks",
-    date: "February 12-19, 2025",
+    date: "TBA",
     status: "upcoming",
     description: "Complete a subsystem-specific tasks assigned during the lectures to demonstrate your understanding and technical skills.",
     details: [
@@ -86,7 +101,7 @@ const recruitmentStages: Stage[] = [
       "Mentorship available from current members"
     ],
     resources: [
-      { name: "Task Guidelines", url: "#" }
+      // { name: "Task Guidelines", url: "#" }
     ]
   },
   {
@@ -96,12 +111,12 @@ const recruitmentStages: Stage[] = [
     status: "upcoming",
     description: "One-on-one interviews to discuss the techinical skills you built up during the recruitment process",
     details: [
-      "Duration: 20-30 minutes per candidate",
       "Discussion of Task 2 submission",
       "Technical questions on chosen subsystem",
       "Assessment of teamwork and communication skills",
     ],
     resources: [
+      { name: "Subsystem Overviews", url: "/subsystems/eps" }
       // { name: "Interview Tips", url: "#" }
     ]
   }
