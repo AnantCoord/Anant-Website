@@ -23,7 +23,7 @@ const recruitmentStages: Stage[] = [
   {
     id: "orientation",
     name: "Orientation",
-    date: "January 14, 2025",
+    date: "January 14, 2026",
     status: "current",
     description: "To introduce you to our work, vision, and opportunitites for you to be a part of this journey, we are hosting an Orientation Session. Learn about the different subsystems and find where your interests align.",
     details: [
@@ -41,7 +41,7 @@ const recruitmentStages: Stage[] = [
   {
     id: "test-1",
     name: "Round 1 Test",
-    date: "January 17, 2025",
+    date: "January 17, 2026",
     status: "upcoming",
     description: "The first screening test to evaluate your fundamental understanding and problem-solving abilities. We hope you enjoy the paper!",
     details: [
@@ -73,7 +73,7 @@ const recruitmentStages: Stage[] = [
   {
     id: "probationary-lectures",
     name: "Probationary Lectures",
-    date: "January 28 - February 11, 2025",
+    date: "January 28 - February 11, 2026",
     status: "upcoming",
     description: "Attend specialized lectures for each subsystem to understand the technical aspects and choose your preferred domain.",
     details: [
