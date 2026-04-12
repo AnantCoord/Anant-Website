@@ -35,4 +35,32 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+## Recruitments toggle (currently disabled)
+
+Recruitments are now controlled by a single feature flag.
+
+- File: `lib/feature-flags.ts`
+- Parameter: `featureFlags.recruitments`
+- Current value: `false` (recruitments hidden + `/recruitments` route disabled)
+
+### Re-enable recruitments
+
+1. Open `lib/feature-flags.ts`.
+2. Change:
+
+```ts
+recruitments: false
+```
+
+to:
+
+```ts
+recruitments: true
+```
+
+That single change will:
+- show recruitments in header navigation,
+- show the recruitments bubble on the hero section,
+- re-enable access to the `/recruitments` page.
+
 ## Thanks to ProAltro for Vibecoding this website into existence

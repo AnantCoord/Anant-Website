@@ -22,6 +22,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
+import { isRecruitmentsEnabled } from "@/lib/feature-flags";
 import { cn } from "@/lib/utils";
 
 const subsystems = [
@@ -40,6 +41,10 @@ const navLinks = [
   { name: "Team", href: "/team" },
   { name: "Publications", href: "/publications" },
 ];
+
+const activeNavLinks = isRecruitmentsEnabled
+  ? navLinks
+  : navLinks.filter((link) => link.href !== "/recruitments");
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
@@ -103,7 +108,7 @@ export function Header() {
             <NavigationMenu>
               <NavigationMenuList className="gap-1">
                 {/* Regular nav links */}
-                {navLinks.slice(0, 2).map((link) => (
+                {activeNavLinks.slice(0, 2).map((link) => (
                   <NavigationMenuItem key={link.name}>
                     <Link href={link.href} legacyBehavior passHref>
                       <NavigationMenuLink
@@ -179,9 +184,9 @@ export function Header() {
                 </NavigationMenuItem>
 
                 {/* Remaining nav links */}
-                {navLinks.slice(2).map((link) => (
+                {activeNavLinks.slice(2).map((link) => (
                   <NavigationMenuItem key={link.name}>
-                    {link.name === "Recruitments" ? (
+                    {link.href === "/recruitments" ? (
                       <Link href={link.href} legacyBehavior passHref>
                         <NavigationMenuLink
                           className={cn(
@@ -259,14 +264,14 @@ export function Header() {
               </div>
 
               <div className="flex flex-col gap-1">
-                {navLinks.map((link) => (
+                {activeNavLinks.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className={cn(
                       "flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium transition-all duration-200",
-                      link.name === "Recruitments"
+                      link.href === "/recruitments"
                         ? "bg-[var(--accent-teal)] text-[var(--accent-teal-foreground)] shadow-md shadow-[var(--accent-teal)]/25"
                         : cn(
                             "hover:bg-accent/80",
@@ -277,7 +282,7 @@ export function Header() {
                     )}
                   >
                     {link.name}
-                    <ChevronRight className={cn("h-4 w-4", link.name === "Recruitments" ? "text-[var(--accent-teal-foreground)]/70" : "text-muted-foreground")} />
+                    <ChevronRight className={cn("h-4 w-4", link.href === "/recruitments" ? "text-[var(--accent-teal-foreground)]/70" : "text-muted-foreground")} />
                   </Link>
                 ))}
               </div>

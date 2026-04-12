@@ -16,11 +16,12 @@ import { TiltCard, Magnetic } from "@/components/effects";
 import { containerReveal, itemReveal, listContainer, listItem, EASE } from "@/lib/motion";
 
 const publications = [
+  // 2024
   {
     id: "pub-1",
     title: "Dynamic Simulation of Electrical and Thermal Systems",
     authors: "Aryan, Vinayak, Sai, Shiv",
-    conference: "IAC 2024",
+    conference: "75th International Astronautical Congress (IAC 2024)",
     year: "2024",
     type: "Conference Paper",
     pdf: "/papers/2024_10-IAC75-Dynamic Simulation of Electrical and Thermal Systems-Aryan,Vinayak,Sai,Shiv.pdf",
@@ -28,35 +29,12 @@ const publications = [
     abstract:
       "This paper presents a comprehensive dynamic simulation framework for electrical and thermal systems in nanosatellites.",
   },
+  // 2020
   {
     id: "pub-2",
-    title: "Hardware Architecture of Electrical Power System for 3U Hyperspectral Imaging CubeSat",
-    authors: "Nihal Sanjay Singh",
-    conference: "IEEE Conference",
-    year: "2023",
-    type: "Conference Paper",
-    pdf: "/papers/Hardware Architecture of Electrical Power System for 3U Hyperspectral Imaging CubeSat - Nihal Sanjay Singh.pdf",
-    externalUrl: null,
-    abstract:
-      "Design and implementation of robust electrical power systems for hyperspectral imaging CubeSat missions.",
-  },
-  {
-    id: "pub-3",
-    title: "Implementation of CCSDS Hyperspectral Image Compression Algorithm onboard a nanosatellite",
-    authors: "Team Anant",
-    conference: "Space Systems Conference",
-    year: "2023",
-    type: "Journal Article",
-    pdf: "/papers/Implementation of CCSDS Hyperspectral Image Compression Algorithm onboard a nanosatellite.pdf",
-    externalUrl: null,
-    abstract:
-      "Novel approach to implementing CCSDS compression standards for hyperspectral data processing in resource-constrained environments.",
-  },
-  {
-    id: "pub-4",
     title: "Kalman Filter Implementation for Attitude Determination",
     authors: "Aditya Bhardwaj",
-    conference: "IAC 2020",
+    conference: "71st International Astronautical Congress (IAC 2020)",
     year: "2020",
     type: "Conference Paper",
     pdf: "/papers/IAC2020-KalmanFilter - Aditya Bhardwaj.pdf",
@@ -65,10 +43,133 @@ const publications = [
       "Advanced Kalman filtering techniques for precise attitude determination in nanosatellite systems.",
   },
   {
+    id: "pub-3",
+    title: "Design and Development of CubeSat Power System",
+    authors: "Parth Kharade",
+    conference: "71st International Astronautical Congress (IAC 2020)",
+    year: "2020",
+    type: "Conference Paper",
+    pdf: "/papers/IAC-20,C3,4,5,x60998 - Parth Kharade.pdf",
+    externalUrl: null,
+    abstract:
+      "Comprehensive design methodology for CubeSat power systems with focus on efficiency and reliability.",
+  },
+  // 2019
+  {
+    id: "pub-4",
+    title: "Hardware-in-the-Loop Simulation for Satellite Systems",
+    authors: "Team Anant",
+    conference: "IEEE Conference 2019",
+    year: "2019",
+    type: "Conference Paper",
+    pdf: "/papers/IEEE2019-InLoopSimulation.pdf",
+    externalUrl: null,
+    abstract:
+      "Development of hardware-in-the-loop simulation environment for testing satellite subsystems.",
+  },
+  {
     id: "pub-5",
+    title: "Satellite Communication and Ground Station Design",
+    authors: "Tushar Goyal",
+    conference: "International Conference 2019",
+    year: "2019",
+    type: "Conference Paper",
+    pdf: "/papers/goyal2019.pdf",
+    externalUrl: null,
+    abstract:
+      "Design principles and implementation strategies for satellite communication systems and ground station interfaces.",
+  },
+  {
+    id: "pub-6",
+    title: "Attitude Determination and Control System Design",
+    authors: "Tanuj Kumar",
+    conference: "arXiv Preprint 2019",
+    year: "2019",
+    type: "Technical Report",
+    pdf: "/papers/1911.11225 - Tanuj Kumar.pdf",
+    externalUrl: "https://arxiv.org/abs/1911.11225",
+    abstract:
+      "Comprehensive approach to attitude determination and control system design for nanosatellites.",
+  },
+  {
+    id: "pub-7",
+    title: "CubeSat Mission Analysis and Design",
+    authors: "Team Anant",
+    conference: "69th International Astronautical Congress (IAC 2019)",
+    year: "2019",
+    type: "Conference Paper",
+    pdf: "/papers/IAC-19,B4,9-GTS.5,10,x53342.pdf",
+    externalUrl: null,
+    abstract:
+      "Mission analysis methodology and design considerations for CubeSat missions.",
+  },
+  {
+    id: "pub-8",
+    title: "Small Satellite Conference Paper",
+    authors: "Team Anant",
+    conference: "33rd Annual Small Satellite Conference (SSC 2019)",
+    year: "2019",
+    type: "Conference Paper",
+    pdf: "/papers/Manuscrpit_SSC19-WP2-25.pdf",
+    externalUrl: null,
+    abstract:
+      "Technical developments and mission planning for small satellite systems.",
+  },
+  {
+    id: "pub-9",
+    title: "Hardware Architecture of Electrical Power System for 3U Hyperspectral Imaging CubeSat",
+    authors: "Nihal Sanjay Singh",
+    conference: "IEEE Conference",
+    year: "2019",
+    type: "Conference Paper",
+    pdf: "/papers/Hardware Architecture of Electrical Power System for 3U Hyperspectral Imaging CubeSat - Nihal Sanjay Singh.pdf",
+    externalUrl: null,
+    abstract:
+      "Design and implementation of robust electrical power systems for hyperspectral imaging CubeSat missions.",
+  },
+  {
+    id: "pub-10",
+    title: "Implementation of CCSDS Hyperspectral Image Compression Algorithm onboard a nanosatellite",
+    authors: "Nishant Gupta",
+    conference: "IEEE International Geoscience and Remote Sensing Symposium",
+    year: "2019",
+    type: "Journal Article",
+    pdf: "/papers/09172474 - NISHANT GUPTA.pdf",
+    externalUrl: null,
+    abstract:
+      "Novel approach to implementing CCSDS compression standards for hyperspectral data processing in resource-constrained environments.",
+  },
+  // 2018
+  {
+    id: "pub-11",
+    title: "Full Length Paper on Satellite Research",
+    authors: "Team Anant",
+    conference: "Progress In Electromagnetics Research Symposium (PIERS 2018)",
+    year: "2018",
+    type: "Conference Paper",
+    pdf: "/papers/Full_length_paper_PIERS.pdf",
+    externalUrl: null,
+    abstract:
+      "Comprehensive research findings on electromagnetic systems for satellite applications.",
+  },
+  {
+    id: "pub-12",
+    title: "11th European CubeSat Symposium Paper",
+    authors: "Team Anant",
+    conference: "11th European CubeSat Symposium",
+    year: "2018",
+    type: "Conference Paper",
+    pdf: "/papers/11th-European CubeSat Symposium.pdf",
+    externalUrl: null,
+    abstract:
+      "Research contributions presented at the European CubeSat Symposium on nanosatellite development.",
+  },
+  // 2017
+  {
+    id: "pub-13",
     title: "Helmholtz Cage Design for Magnetic Testing",
     authors: "Tushar Goyal",
-    conference: "IAC 2017",
+    conference: "68th International Astronautical Congress (IAC 2017)",
     year: "2017",
     type: "Conference Paper",
     pdf: "/papers/IAC2017-HelmholtzCage - Tushar Goyal.pdf",
@@ -76,24 +177,98 @@ const publications = [
     abstract:
       "Design and implementation of Helmholtz cage systems for magnetic field testing of satellite components.",
   },
+  // Technical Reports and Other Documents
   {
-    id: "pub-6",
+    id: "pub-14",
     title: "Modes of Operation for Nanosatellite Systems",
     authors: "Team Anant",
-    conference: "Space Conference",
-    year: "2023",
+    conference: "Technical Report",
+    year: "2020",
     type: "Technical Report",
     pdf: "/papers/Final_Modes_of_Operation_Paper.pdf",
     externalUrl: null,
-    abstract: "Comprehensive analysis of operational modes for efficient nanosatellite mission execution.",
+    abstract:
+      "Comprehensive analysis of operational modes for efficient nanosatellite mission execution.",
+  },
+  {
+    id: "pub-15",
+    title: "OBC-TTC Interface Design",
+    authors: "Team Anant",
+    conference: "Technical Report",
+    year: "2019",
+    type: "Technical Report",
+    pdf: "/papers/OBC-TTC interface.pdf",
+    externalUrl: null,
+    abstract:
+      "Interface design documentation between On-Board Computer and Telemetry, Tracking & Command systems.",
+  },
+  {
+    id: "pub-16",
+    title: "IAC Manuscript on Satellite Systems",
+    authors: "Team Anant",
+    conference: "International Astronautical Congress",
+    year: "2019",
+    type: "Conference Paper",
+    pdf: "/papers/IAC_Manuscript_C.2.2.10.pdf",
+    externalUrl: null,
+    abstract:
+      "Research manuscript on advanced satellite system architectures and implementations.",
+  },
+  {
+    id: "pub-17",
+    title: "Satellite Payload Research",
+    authors: "Jeet Yadav",
+    conference: "Research Paper",
+    year: "2019",
+    type: "Technical Report",
+    pdf: "/papers/Paper - Jeet Yadav.pdf",
+    externalUrl: null,
+    abstract:
+      "Research on satellite payload systems and data processing methodologies.",
+  },
+  {
+    id: "pub-18",
+    title: "Prerna Research Paper",
+    authors: "Prerna",
+    conference: "Research Paper",
+    year: "2019",
+    type: "Technical Report",
+    pdf: "/papers/prerna.pdf",
+    externalUrl: null,
+    abstract:
+      "Research contributions to nanosatellite systems development.",
+  },
+  {
+    id: "pub-19",
+    title: "Implementation of CCSDS Hyperspectral Image Compression Algorithm",
+    authors: "Team Anant",
+    conference: "Technical Documentation",
+    year: "2019",
+    type: "Technical Report",
+    pdf: "/papers/Implementation of CCSDS Hyperspectral Image Compression Algorithm onboard a nanosatellite.pdf",
+    externalUrl: null,
+    abstract:
+      "Detailed implementation guide for CCSDS hyperspectral image compression on nanosatellite platforms.",
+  },
+  {
+    id: "pub-20",
+    title: "Research Poster Presentation",
+    authors: "Team Anant",
+    conference: "Conference Poster",
+    year: "2019",
+    type: "Technical Report",
+    pdf: "/papers/POSTER pre-final 1.pdf",
+    externalUrl: null,
+    abstract:
+      "Visual summary of research findings and project progress for conference presentation.",
   },
 ];
 
 const stats = [
-  { value: "15+", label: "Total Papers" },
-  { value: "8", label: "Conference Papers" },
-  { value: "4", label: "Journal Articles" },
-  { value: "3", label: "Technical Reports" },
+  { value: "20", label: "Total Papers" },
+  { value: "13", label: "Conference Papers" },
+  { value: "1", label: "Journal Articles" },
+  { value: "6", label: "Technical Reports" },
 ];
 
 function getTypeVariant(type: string): "default" | "secondary" | "outline" {

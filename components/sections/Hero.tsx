@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket } from "lucide-react";
 import { ParallaxLayer, BlurReveal, SlideReveal } from "@/components/effects";
+import { isRecruitmentsEnabled } from "@/lib/feature-flags";
 
 export function Hero() {
   return (
@@ -79,20 +80,21 @@ export function Hero() {
 
         {/* CTA Buttons */}
         <SlideReveal delay={0.6} className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap">
-          {/* Recruitments Open Bubble */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 200, damping: 25 }}
-          >
-            <Link href="/recruitments" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--accent-teal)]/40 bg-[var(--accent-teal)]/15 hover:bg-[var(--accent-teal)]/25 hover:border-[var(--accent-teal)]/60 transition-all duration-200 cursor-pointer shadow-lg shadow-[var(--accent-teal)]/20">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-teal)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-teal)]"></span>
-              </span>
-              <span className="text-sm font-medium text-[var(--accent-teal)]">Recruitments Open!</span>
-            </Link>
-          </motion.div> 
+          {isRecruitmentsEnabled && (
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            >
+              <Link href="/recruitments" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--accent-teal)]/40 bg-[var(--accent-teal)]/15 hover:bg-[var(--accent-teal)]/25 hover:border-[var(--accent-teal)]/60 transition-all duration-200 cursor-pointer shadow-lg shadow-[var(--accent-teal)]/20">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-teal)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-teal)]"></span>
+                </span>
+                <span className="text-sm font-medium text-[var(--accent-teal)]">Recruitments Open!</span>
+              </Link>
+            </motion.div>
+          )}
           
           <motion.div
             whileHover={{ scale: 1.02 }}
