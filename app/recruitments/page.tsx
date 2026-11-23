@@ -66,7 +66,7 @@ const recruitmentStages: Stage[] = [
     id: "interviews-1",
     name: "Round 1 Interviews",
     date: "January 25 - January 31, 2026",
-    status: "current",
+    status: "completed",
     description: "Personal interviews to discuss your test performance for Round 1.",
     details: [
       "You may be called for multiple interviews based on the subsystems you attempted.",
@@ -82,7 +82,7 @@ const recruitmentStages: Stage[] = [
     id: "probationary-lectures",
     name: "Probationary Lectures",
     date: "February 2 - February 20, 2026",
-    status: "upcoming",
+    status: "completed",
     description: "Attend specialized lectures for each subsystem to understand the technical aspects and choose your preferred domain.",
     details: [
       "One-Two lecture per subsystem over the weeks",
@@ -99,8 +99,8 @@ const recruitmentStages: Stage[] = [
   {
     id: "task-2",
     name: "Round 2 Tasks",
-    date: "TBA",
-    status: "upcoming",
+    date: "February 22 - March 7, 2026",
+    status: "current",
     description: "Complete a subsystem-specific tasks assigned during the lectures to demonstrate your understanding and technical skills.",
     details: [
       "Can choose multiple subsystems",
