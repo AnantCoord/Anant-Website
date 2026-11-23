@@ -156,7 +156,7 @@ const teamData = {
         { name: "Ahaan Chaturvedi", position: "Senior Member", image: "/assets/team_files/24-25/AHAAN_CHATURVEDI.jpg" },
         { name: "Hiya Desai", position: "Senior Member", image: "/assets/team_files/24-25/HIYA_NIRAV_DESAI.png" },
         { name: "Harshit Singh", position: "Member", image: "/assets/team_files/24-25/HARSHIT_SINGH.png" },
-        { name: "O.R. Rudra", position: "Member", image: "/assets/team_files/24-25/ONTIPULI_RUSHIL_RUDRA.png" },
+        { name: "Rushil Rudra", position: "Member", image: "/assets/team_files/24-25/RUSHIL_RUDRA.png" },
         { name: "Sooraj Kulshrestha", position: "Member", image: "/assets/team_files/24-25/SOORAJ_KULSHRESTHA.png" },
         { name: "Janak Vaswani", position: "Member", image: "/assets/team_files/24-25/JANAK_DINESH_VASWANI.png" },
         { name: "Gauransh Gupta", position: "Member", image: "/assets/team_files/24-25/GAURANSH_GUPTA.png" },
